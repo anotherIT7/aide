@@ -1,6 +1,8 @@
 # AIDE
 
-This image is a CentOS 7 based container which contains the AIDE (Advanced Intrusion Detection Environment) file and directory integrity checker.
+This image is a CentOS 7 based container which contains the AIDE (Advanced Intrusion Detection Environment) file and directory integrity checker. It is heavily based on iitg@gmail.com's implementation:
+https://github.com/iitggithub/aide
+
 
 # Supported Versions
 
@@ -18,7 +20,7 @@ There's two ways to get up and running, the easy way and the... less... easy way
 Fire up AIDE
 
 ```
-docker run -d --name aide -v /data/apache/aide:/var/lib/aide iitgdocker/aide:latest
+docker run -d --name aide -v /data/apache/aide:/var/lib/aide anotherit7/aide:latest
 ```
 
 ## The Less Easy Way (Docker Compose)
@@ -27,7 +29,7 @@ The github repo contains a docker-compose.yml you can use as a base. The docker-
 
 ```
 aide:
-  image: iitgdocker/aide:latest
+  image: anotherit7/aide:latest
   volumes:
     - /data/apache/aide:/var/lib/aide
 ```
@@ -51,7 +53,7 @@ Replace container_name with the name/id of your running container.
 docker rm aide
 
 # use this command to re-run aide
-docker run -d --name aide --rm -v /data/apache/aide:/var/lib/aide iitgdocker/aide:latest
+docker run -d --name aide --rm -v /data/apache/aide:/var/lib/aide anotherit7/aide:latest
 ```
 
 # Environment Variables

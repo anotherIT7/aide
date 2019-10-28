@@ -1,10 +1,8 @@
 FROM centos:7.6.1810
 
-MAINTAINER "The Ignorant IT Guy" <iitg@gmail.com>
+MAINTAINER "Another IT7" <anotherIT7@gmail.com>
 
-RUN yum -y --nogpgcheck update && yum -y --nogpgcheck install \
-                                                              aide && \
-                                                              yum clean all
+RUN yum -y update && yum -y install aide && yum clean all
 
 # Install the default AIDE configuration
 COPY aide.conf /etc/aide.conf
