@@ -1,4 +1,4 @@
-FROM centos:7.2.1511
+FROM centos:7.6.1810
 
 MAINTAINER "The Ignorant IT Guy" <iitg@gmail.com>
 

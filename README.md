@@ -42,13 +42,16 @@ By running 'docker-compose up -d' from within the same directory as your docker-
 
 If aide_init.sh finds a file called aide.conf in this directory, AIDE will use this instead of its default configuration file.
 
-If changes are made to the container after its been started, you'll probably need to update the AIDE integrity database. You can do this from outside of the container by running the following command against your container:
+After initilization (/var/lib/aide/aide.db.gz has been created), subsequent executions of the container will run against the database, detect, log any file changes and update the db to reflect the current filesystem. A new container will be created each time the docker run command is executed. To avoid creating a new container each time, use this command:
 
 Replace container_name with the name/id of your running container.
 
 ```
-docker exec -it <container_name> /usr/sbin/aide --init
-docker exec -it <container_name> mv -vf /tmp/aide.db.new.gz /var/lib/aide/aide.db.gz
+# remove the previous container first
+docker rm aide
+
+# use this command to re-run aide
+docker run -d --name aide --rm -v /data/apache/aide:/var/lib/aide iitgdocker/aide:latest
 ```
 
 # Environment Variables
