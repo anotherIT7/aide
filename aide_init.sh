@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 # This file does lots of running around before generating a new AIDE database.
 
